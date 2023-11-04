@@ -84,3 +84,118 @@ const numeros = [2, 4, 6, 8, 10, 12, 14];
 const numerosX3 = numeros.map(n => n * 3);
 
 numerosX3; // [6, 12, 18, 24, 30, 36, 42];
+
+
+
+
+// [].MAP() VS [].FOREACH()
+// Se o objetivo for modificar os valores da array atual, sempre utilize o map, pois assim uma nova array com os valores modificados é retornada e você pode imediatamente iterar novamente sobre estes valores.
+
+const numeros2 = [2, 4, 6, 8, 10, 12, 14];
+const numerossX3 = numeros.map(n => n * 3);
+
+numerosX3; // [6, 12, 18, 24, 30, 36, 42];
+
+
+
+
+// [].MAP() COM OBJETOS
+// Map pode ser muito útil para interagirmos com uma array de objetos, onde desejamos isolar um valor único de cada objeto.
+
+const aulas = [
+  {
+    nome: 'HTML 1',
+    min: 15
+  },
+  {
+    nome: 'HTML 2',
+    min: 10
+  },
+  {
+    nome: 'CSS 1',
+    min: 20
+  },
+  {
+    nome: 'JS 1',
+    min: 25
+  },
+]
+
+const tempoAulas = aulas.map(aula => aula.min);
+// [15, 10, 20, 25];
+
+const puxarNomes = aula => aula.nome;
+const nomesAulas = aulas.map(puxarNomes);
+// ['HTML 1', 'HTML 2', 'CSS 1', 'JS 1']
+
+
+
+
+
+
+// [].REDUCE()
+// [].reduce(callback(acumulador, valorAtual, index, array), valorInicial) executa a função de callback para cada item da Array. Um valor especial existe nessa função de callback, ele é chamado de acumulador, mas é na verdade apenas o retorno da iteração anterior.
+
+const aulas2 = [10, 25, 30];
+const total1 = aulas2.reduce((acumulador, atual) => {
+  return acumulador + atual;
+});
+total1; // 65
+
+const total2 = aulas2.reduce((acc, cur) => acc + cur, 100);
+total2; // 165
+
+
+
+
+
+// REDUCE PASSO A PASSO 1
+// O primeiro parâmetro do callback é o valor do segundo argumento passado no reduce(callback, inicial) durante a primeira iteração. Nas iterações seguintes este valor passa a ser o retornado pela anterior.
+
+const aulas3 = [10, 25, 30];
+
+// 1
+//aulas3.reduce((10, 25) => {
+//  return  + 10;
+//}, 0); // retorna 10
+
+// 2
+//aulas3.reduce((10, 25) => {
+//  return 10 + 25;
+//}, 0); // retorna 35
+
+// 3
+//aulas3.reduce((35, 30) => {
+//  return 35 + 30;
+//}, 0); // retorna 65
+
+
+
+
+// REDUCE PASSO A PASSO 2
+// Se não definirmos o valor inicial do acumulador, ele irá pular a primeira iteração e começara a partir da segunda. Neste caso o valor do acumulador será o valor do item da primeira iteração.
+
+const aulas4 = [10, 25, 30];
+
+// 1
+//aulas.reduce((10, 25) => {
+//  return 10 + 25;
+//}) // retorna 35
+
+// 2
+//aulas.reduce((35, 30) => {
+//  return 35 + 30;
+//}) // retorna 65
+
+
+
+
+
+// MAIOR VALOR COM [].REDUCE()
+// const numeros = [10, 25, 60, 5, 35, 10];
+
+const maiorValor = numeros.reduce((anterior, atual) => {
+  return anterior < atual ? atual : anterior;
+});
+
+maiorValor; // 60
