@@ -291,3 +291,46 @@ const buscaUva = frutas4.findIndex((fruta) => {
 
 const numeros5 = [6, 43, 22, 88, 101, 29];
 const buscaMaior45 = numeros5.find(x => x > 45); // 88
+
+
+
+
+// [].FILTER()
+// [].filter(), retorna uma array com a lista de valores que durante a sua iteração retornaram um valor truthy.
+
+const frutas6 = ['Banana', undefined, null, '', 'Uva', 0, 'Maçã'];
+const arrayLimpa = frutas6.filter((fruta) => {
+  return fruta; 
+}); // ['Banana', 'Uva', 'Maçã']
+
+const numeros6 = [6, 43, 22, 88, 101, 29];
+const buscaMaior44 = numeros6.filter(x => x > 44); // [88, 101]
+
+
+
+
+// FILTER EM OBJETOS
+
+const aulas5 = [
+  {
+    nome: 'HTML 1',
+    min: 15
+  },
+  {
+    nome: 'HTML 2',
+    min: 10
+  },
+  {
+    nome: 'CSS 1',
+    min: 20
+  },
+  {
+    nome: 'JS 1',
+    min: 25
+  },
+]
+
+const aulasMaiores = aulas5.filter((aula) => { 
+  return aula.min > 15;
+});
+// [{nome: 'CSS 1', min: 20}, {nome: 'JS 1', min: 25}]
