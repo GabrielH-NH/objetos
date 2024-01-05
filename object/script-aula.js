@@ -147,3 +147,55 @@ Object.values(carro4);
 // ['Ford', 2018]
 Object.entries(carro4);
 // [['marca', 'Ford'], ['ano', 2018]]
+
+
+
+// OBJECT.GETOWNPROPERTYNAMES(OBJ)
+// Retorna uma array com todas as propriedades diretas do objeto (não retorna as do protótipo).
+
+Object.getOwnPropertyNames(Array);
+// ['length', 'name', 'prototype', 'isArray', 'from', 'of']
+
+Object.getOwnPropertyNames(Array.prototype);
+// [..., 'filter', 'map', 'every', 'some', 'reduce', ...]
+
+const carro5 = {
+  marca: 'Ford',
+  ano: 2018,
+}
+Object.getOwnPropertyNames(carro5);
+// ['marca', 'ano']
+
+
+
+
+// OBJECT.GETPROTOTYPEOF() E OBJECT.IS()
+// Object.getPrototypeOf(), retorna o protótipo do objeto. Object.is(obj1, obj2) verifica se os objetos são iguais e retorna true ou false.
+
+const frutas = ['Banana', 'Pêra']
+Object.getPrototypeOf(frutas);
+Object.getPrototypeOf(''); // String
+
+const frutas1 = ['Banana', 'Pêra'];
+const frutas2 = ['Banana', 'Pêra'];
+
+Object.is(frutas1, frutas2); // false
+
+
+
+
+
+// OBJECT.FREEZE(), OBJECT.SEAL(), OBJECT.PREVENTEXTENSIONS()
+// Object.freeze() impede qualquer mudança nas propriedades. Object.seal() previne a adição de novas propriedades e impede que as atuais sejam deletadas. Object.preventExtensions() previne a adição de novas propriedades.
+
+const carro6 = {
+  marca: 'Ford',
+  ano: 2018,
+}
+Object.freeze(carro6);
+Object.seal(carro6);
+Object.preventExtensions(carro6);
+
+Object.isFrozen(carro6); // true
+Object.isSealed(carro6); // true
+Object.isExtensible(carro6); // false
