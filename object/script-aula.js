@@ -198,4 +198,65 @@ Object.preventExtensions(carro6);
 
 Object.isFrozen(carro6); // true
 Object.isSealed(carro6); // true
-Object.isExtensible(carro6); // false
+Object.isExtensible(carro6); // 
+
+
+
+
+// PROPRIEDADES E MÉTODOS DO PROTÓTIPO
+// Já que tudo em JavaScript é objeto, as propriedades abaixo estão disponíveis em todos os objetos criados a partir de funções construtoras. {}.constructor retorna a função construtora do objeto.
+
+const frutas3 = ['Banana', 'Uva'];
+frutas3.constructor; // Array
+
+const frase = 'Isso é uma String';
+frase.constructor; // String
+
+
+
+// {}.HASOWNPROPERTY('PROP') E {}.PROPERTYISENUMERABLE('PROP')
+// Verifica se possui a propriedade e retorna true. A propriedade deve ser direta do objeto e não do protótipo. O {}.propertyIsEnumerable() verifica se a propriedade é enumerável.
+
+const frutas4 = ['Banana', 'Uva'];
+
+frutas4.hasOwnProperty('map'); // false
+Array.hasOwnProperty('map'); // false
+Array.prototype.hasOwnProperty('map'); // true
+
+Array.prototype.propertyIsEnumerable('map'); // false
+window.propertyIsEnumerable('innerHeight'); // true
+
+
+
+
+// {}.ISPROTOTYPEOF(VALOR)
+// Verifica se é o protótipo do valor passado.
+
+const frutas5 = ['Banana', 'Uva'];
+
+Array.prototype.isPrototypeOf(frutas5); // true
+
+
+
+
+// {}.TOSTRING()
+// Retorna o tipo do objeto. O problema é toString() ser uma função dos protótipos de Array, String e mais. Por isso é comum utilizarmos a função direto do Object.prototype.toString.call(valor).
+
+const frutas6 = ['Banana', 'Uva'];
+frutas6.toString(); // 'Banana,Uva'
+typeof frutas6; // object
+Object.prototype.toString.call(frutas); // [object Array]
+
+const frase4 = 'Uma String';
+frase4.toString(); // 'Uma String'
+typeof frase4; // string
+Object.prototype.toString.call(frase); // [object String]
+
+const carro10 = {marca: 'Ford'};
+carro10.toString(); // [object Object]
+typeof carro10; // object
+Object.prototype.toString.call(carro); // [object Object]
+
+const li = document.querySelectorAll('li');
+typeof li; // object
+Object.prototype.toString.call(li); // [object NodeList]
